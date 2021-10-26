@@ -15,7 +15,7 @@ jobs:
             github-token: ${{secrets.GITHUB_TOKEN}}
             script: |
               github.repos.createInOrg({
-                org: rkjakeer,
-                name: new_driver,
+                org: "rkjakeer",
+                name: "new_driver",
               });
             
