@@ -1,0 +1,20 @@
+name: Create repo for a requesting issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+      - name: Add repo to org
+        if: contains(github.event.issue.labels.*.name, 'request')
+        uses: actions/github-script@0.8.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.repos.createInOrg({
+              org: rkjakeer,
+              name: new_driver,
+            });
+            
